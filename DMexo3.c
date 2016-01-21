@@ -23,7 +23,7 @@ Le troisième argument est un pointeur vers la fonction à exécuter dans le thr
   ----Question b----
 
 Pour gerer le paramètre k, on crée une variable globale à laquelle on transmet la valeur de k.
-On peut alors
+On peut alors stopper les threads lorsqu'on le souhaite.
 
 
 */
@@ -175,7 +175,6 @@ void* sub_vect_find(void *args) {
 
 int thread_find(int *U, int i_start, int i_end, int i_step, int val, int **ind_val, int k, int ver ) {
 
-
   numberOccurrenceTotal = 0;
   int numberOfThread = 2;
   int numberForThread = (i_end - i_start) / (numberOfThread);
@@ -183,6 +182,9 @@ int thread_find(int *U, int i_start, int i_end, int i_step, int val, int **ind_v
 
   pthread_t table_thread[numberOfThread];
   struct struct_data data[numberOfThread];
+
+  printf("nombre de threads: %d \n", numberOfThread);
+
 
   for (int i = 0; i < numberOfThread; ++i)
   {
